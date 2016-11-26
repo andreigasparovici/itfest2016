@@ -94,3 +94,7 @@
 .collapsed .parent-collapsed {
   display: inline-block;
 }
+
+.shown-university{
+    display: flex; flex-wrap: wrap;
+}
