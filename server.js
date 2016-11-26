@@ -103,6 +103,13 @@ app.get('/class/:eventId',(req,res)=>{
     });
 });
 
+app.get('/class/:univId/add',function(req,res){
+    res.render("create_new_class",{
+        user: req.session.user,
+        univId: req.params.univId
+    });
+});
+
 app.get('/logout',(req,res)=>{
     req.session.user=undefined;
     res.redirect("/");
