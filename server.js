@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const path = require('path');
+const csrf = require('csurf');
 
 const config = require('./config');
 
@@ -27,6 +29,8 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 var csrfProtection = csrf({ cookie: true });
+
+app.use('/assets',express.static(path.join(__dirname,'assets')));
 
 app.get('/',(req,res)=>{
     res.render('index');
