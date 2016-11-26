@@ -29,7 +29,7 @@ router.get('/university',(req,res)=>{
     });
 });
 
-router.get('/university/:university/classes/',(req,res)=>{
+router.get('/classes/:university/',(req,res)=>{
     University.findOne({ 'name': req.params.university }, 'name', function (err, university) {
         if (err) return handleError(err);
         if (!university) 
