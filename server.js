@@ -42,8 +42,11 @@ app.get('/',(req,res)=>{
 
 var loginRoutes = require('./routes/login');
 
+var signupRoutes = require('./routes/signup');
+
 app.use('/login',loginRoutes);
 
+app.use('/signup', signupRoutes);
 
 app.get('*',(req,res)=>{
     res.render('index');
