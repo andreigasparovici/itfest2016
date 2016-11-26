@@ -9,11 +9,9 @@
             <div class="col-md-6"><img style="width: 100%" class="thumbnail" src="<%=university.image%>" ></div>
             <div class="col-md-6"><%=university.description%></div>
 
-
-
         </div>
         <a class="btn btn-success" href="/course/add">Adauga curs nou</a>
-        <p>Aici lista cursuri</p>
+        <a href="/classes/<%= university.name %>"></a>
      </div>
     
 </div>
