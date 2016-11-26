@@ -40,6 +40,11 @@ app.get('/',(req,res)=>{
     res.render('index');
 });
 
+var loginRoutes = require('./routes/login');
+
+app.use('/login',loginRoutes);
+
+
 app.get('*',(req,res)=>{
     res.render('index');
 });
