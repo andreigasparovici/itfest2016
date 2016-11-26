@@ -10,7 +10,10 @@ var csrfProtection = csrf({ cookie: true });
 var User = require('../models/user');
 
 router.get('/',csrfProtection,(req,res)=>{
-    res.render('signup');
+    res.render('signup',{
+        csrfToken: req.csrfToken(),
+        flash: req.flash()
+    });
 });
 
 router.post('/',csrfProtection,(req,res)=>{
@@ -28,7 +31,17 @@ router.post('/',csrfProtection,(req,res)=>{
         'email':req.body.email
     },(err,user)=>{
         if(err) throw err;
-        
+        if(user){
+            req.flash("error","Email address already taken!");
+            res.redirect("/signup");
+            return;
+        }
+        User.collection.insert({
+           'email':req.body.email,
+           'password':bcrypt.hashSync(req.body.password) 
+        });
+        req.flash("success","Account created! Please log in.");
+        res.redirect("/login");
     });
 });
 
