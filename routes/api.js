@@ -93,17 +93,17 @@ router.get('/users/:courseId',(req,res)=>{
     
 });
 
-router.get('/hosts',(req,res)=>{
+router.get('/emails',(req,res)=>{
     starting = req.query.term;
     if(!starting)
         starting = "";
-    var query = User.find({"host" : true, "email": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
+    var query = User.find({"email": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
     query.select("email");
-    query.exec(function(err, hosts){
-        console.log(hosts);
+    query.exec(function(err, users){
+        console.log(users);
         if (err) return handleError(err);
         var v=[];
-        hosts.forEach(function(i){
+        users.forEach(function(i){
             v.push({value : i.email});
         })
         res.json(v);
