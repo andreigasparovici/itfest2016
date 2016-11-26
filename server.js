@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const csrf = require('csurf');
-
+const flash = require('express-flash');
 const mongoose = require('mongoose');
 
 const config = require('./config');
@@ -20,6 +20,8 @@ app.use(morgan('dev'));
 app.use(helmet());
 
 app.use(cookieParser());
+
+app.use(flash());
 
 app.use(session({
     secret: config.SESSION_SECRET_KEY,
@@ -48,9 +50,14 @@ app.use('/login',loginRoutes);
 
 app.use('/signup', signupRoutes);
 
-app.get('*',(req,res)=>{
+app.get('/logout',(req,res)=>{
+    req.session.user=undefined;
+});
+
+/*app.get('*',(req,res)=>{
     res.render('index');
 });
+*/
 
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);
