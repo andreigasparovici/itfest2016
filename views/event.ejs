@@ -2,6 +2,8 @@
 
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.css' />
 <link rel="stylesheet" href="/assets/css/style3.css">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js'></script>
 
 <div class="container">
     <div class="jumbotron">
@@ -9,12 +11,86 @@
         <h4>Profesor</h4>
         <p>Descrierea va veni aici</p>
 
+        <hr>
 
         <button class="btn btn-primary">Inscrie-te/Anuleaza inscrierea</button>
         <button class="btn btn-warning">Modifica</button>
         <button class="btn btn-danger">Sterge</button>
+
+        <hr>
+
+        <div id="calendar"></div>
      </div>
     
 </div>
+
+<script>
+    $(document).ready(function() {
+
+          // page is now ready, initialize the calendar...
+
+       $('#calendar').fullCalendar({
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+				{
+					title: 'All Day Event',
+					start: '2016-09-01'
+				},
+				{
+					title: 'Long Event',
+					start: '2016-09-07',
+					end: '2016-09-10'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-09-09T16:00:00'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-09-16T16:00:00'
+				},
+				{
+					title: 'Conference',
+					start: '2016-09-11',
+					end: '2016-09-13'
+				},
+				{
+					title: 'Meeting',
+					start: '2016-09-12T10:30:00',
+					end: '2016-09-12T12:30:00'
+				},
+				{
+					title: 'Lunch',
+					start: '2016-09-12T12:00:00'
+				},
+				{
+					title: 'Meeting',
+					start: '2016-09-12T14:30:00'
+				},
+				{
+					title: 'Happy Hour',
+					start: '2016-09-12T17:30:00'
+				},
+				{
+					title: 'Dinner',
+					start: '2016-09-12T20:00:00'
+				},
+				{
+					title: 'Birthday Party',
+					start: '2016-09-13T07:00:00'
+				},
+				{
+					title: 'Click for Google',
+					url: 'http://google.com/',
+					start: '2016-09-28'
+				}
+			]
+        })
+
+    });
+</script>
 
 <% include partials/footer %>
