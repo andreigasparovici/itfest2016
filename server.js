@@ -50,6 +50,10 @@ app.use('/login',loginRoutes);
 
 app.use('/signup', signupRoutes);
 
+app.get('/logout',(req,res)=>{
+    req.session.user=undefined;
+});
+
 /*app.get('*',(req,res)=>{
     res.render('index');
 });

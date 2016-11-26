@@ -31,8 +31,17 @@ router.post('/',csrfProtection,(req,res)=>{
     },(err,user)=>{
         if(err) throw err;
         if(!user){
-
+            req.flash("error","Wrong email or password!");
+            res.redirect("/login");
+            return;
         }
+        if(!bcrypt.compareSync(req.body.password,user.password)){
+            req.flash("error","Wrong email or password!");
+            res.redirect("/login");
+            return;
+        }
+        req.session.user=user;
+        res.redirect('/');
     });
 });
 
