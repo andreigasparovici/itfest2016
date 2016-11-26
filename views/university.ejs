@@ -5,11 +5,11 @@
         <h1><%=university.name%></h1>
         <div class="row">
 
-            <div class="col-md-6"><img style="width: 100%" class="thumbnail" src="https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/b_AllSoulsquad.jpg?itok=N1GzQbrQ" ></div>
+            <div class="col-md-6"><img style="width: 100%" class="thumbnail" src="<%=university.image%>" ></div>
             <div class="col-md-6"><%=university.description%></div>
 
         </div>
-        <a class="btn btn-success" href="/">Adauga curs nou</a>
+        <a class="btn btn-success" href="/course/add">Adauga curs nou</a>
         <p>Aici lista cursuri</p>
      </div>
     

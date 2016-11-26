@@ -17,4 +17,8 @@ router.get('/university/:id',(req,res)=>{
     });
 });
 
+router.get('/course/add',(err,docs)=>{
+    
+});
+
 module.exports=router;

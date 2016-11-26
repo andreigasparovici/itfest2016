@@ -56,11 +56,12 @@ app.get('/',(req,res)=>{
     }
 });
 
-var loginRoutes = require('./routes/login');
 var signupRoutes = require('./routes/signup');
 var apiRoutes = require('./routes/api');
 
-app.use('/login',loginRoutes);
+app.get('/login',csrfProtection,require('./routes/login').get);
+app.post('/login',csrfProtection,require('./routes/login').post);
+
 app.use('/signup', signupRoutes);
 app.use('/api', apiRoutes);
 app.use('/confirm',require('./routes/confirm'));
