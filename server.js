@@ -92,6 +92,8 @@ app.get('/classes',(req,res)=>{
     });
 });
 
+app.use('/subscribe',require('./routes/subscribe'));
+
 
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);
