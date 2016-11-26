@@ -19,4 +19,4 @@ var institutionSchema = new Schema({
     }
 });
 
-module.exports = mongoose.Model("institution", institutionSchema);
+module.exports = mongoose.Model("Institution", institutionSchema);

@@ -11,3 +11,5 @@ var roomSchema = new Schema({
         required: true
     }
 });
+
+module.exports = mongoose.Model("Room", roomSchema);

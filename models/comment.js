@@ -28,3 +28,5 @@ var commentSchema = new Schema({
         required: true
     }
 });
+
+module.exports = mongoose.Model("Comment", commentSchema);
