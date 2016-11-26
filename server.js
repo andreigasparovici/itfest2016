@@ -205,6 +205,16 @@ app.get('/moderator/remove/me/:classid',function(req,res){
     });
 });
 
+app.get('/events/add/:classid',function(req,res){
+    res.render("add_event",{
+        user: req.session.user,
+        classid: req.params.classid
+    });
+});
+
+app.post('/events/add/:classid',function(req,res){
+
+});
 
 app.use('/subscribe',require('./routes/subscribe'));
 

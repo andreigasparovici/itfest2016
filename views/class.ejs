@@ -18,7 +18,7 @@
             </a>
             <% if(isAdmin){ %>
                 <a href="/moderator/add/<%=event._id%>" class="btn btn-primary" id="newmoderator">New moderator</a>
-                <button class="btn btn-info">New event</button>
+                <a class="btn btn-info" href="/events/add/<%=event._id%>">New event</a>
                 <button class="btn btn-warning">Update</button>
                 <button class="btn btn-danger">Delete</button>
                 <a class="btn btn-danger" href="/moderator/remove/me/<%=event._id%>">Remove me</a>
