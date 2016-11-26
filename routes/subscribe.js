@@ -16,3 +16,5 @@ router.get('/:classid',(req,res)=>{
         res.send("Subbscribed successfully!");
     });
 });
+
+module.exports=router;
