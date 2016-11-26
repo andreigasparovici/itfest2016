@@ -39,7 +39,9 @@ var csrfProtection = csrf({ cookie: true });
 app.use('/assets',express.static(path.join(__dirname,'assets')));
 
 app.get('/',(req,res)=>{
-    res.render('index');
+    res.render('index',{
+        user: req.session.user
+    });
 });
 
 var loginRoutes = require('./routes/login');
