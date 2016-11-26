@@ -29,6 +29,9 @@ var userSchema = new Schema({
     },
     confirmKey:{
         type: String
+    },
+    subscribed:{
+        type: Array
     }
 });
 
