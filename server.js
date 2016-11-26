@@ -2,12 +2,18 @@ const express = require('express');
 const session = require('express-session');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
 
 const config = require('./config');
 
 var app = express();
 
 app.use(morgan('dev'));
+
+app.use(helmet());
+
+app.use(cookieParser());
 
 app.use(session({
     secret: config.SESSION_SECRET_KEY,
@@ -20,7 +26,7 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
 
-
+var csrfProtection = csrf({ cookie: true });
 
 app.get('/',(req,res)=>{
     res.render('index');
