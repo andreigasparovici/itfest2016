@@ -25,20 +25,14 @@
 
 <script>
     $(document).ready(function() {
-
-          // page is now ready, initialize the calendar...
 		$.getJSON('/api/event/<%=event._id%>/instances',function(data){
 			$('#calendar').fullCalendar({
 				editable: true,
-				eventLimit: true, // allow "more" link when too many events
+				eventLimit: true,
 				events: data
 			});
 			console.log(data);
 		});
-
-		
-       
-
     });
 </script>
 
