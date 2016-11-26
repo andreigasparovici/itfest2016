@@ -59,6 +59,13 @@ app.get('/logout',(req,res)=>{
     res.redirect("/");
 });
 
+<<<<<<< HEAD
+=======
+var confirmRoutes = require('./routes/confirm');
+
+app.use('/confirm',confirmRoutes);
+
+>>>>>>> 95c9cad6356db05ca5dca73a8cdf080c2e85cf1e
 app.use(require('./routes/university'));
 
 app.get('/classes',(req,res)=>{

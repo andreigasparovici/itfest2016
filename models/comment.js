@@ -19,12 +19,8 @@ var commentSchema = new Schema({
         required: true,
         default: Date.now()
     },
-    event: {
+    instance: {
         type: ObjectId,
-        required: true
-    },
-    eventDate: {
-        type: Date,
         required: true
     }
 });

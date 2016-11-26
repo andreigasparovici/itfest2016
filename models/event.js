@@ -37,6 +37,9 @@ var eventSchema = new Schema({
     },
     category:{
         type: String
+    },
+    instances:{
+        type: Array
     }
 
 });
