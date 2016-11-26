@@ -108,9 +108,12 @@
   </div>
 </div>
 <script>
-var arr=window.location.pathname.split('/');
+var arr = window.location.pathname.split('/');
+var jsonUrl = "/api/classes/";
+if(arr.length == 3)
+  jsonUrl += arr[arr.length - 1];
 $('#searchTerm').autocomplete({
-    source: "/api/classes/"+arr[arr.length-1],
+    source: jsonUrl,
     select: function (event, ui) {
         window.location = ui.item.url;
     }
