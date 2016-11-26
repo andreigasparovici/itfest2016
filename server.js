@@ -52,6 +52,7 @@ app.use('/signup', signupRoutes);
 
 app.get('/logout',(req,res)=>{
     req.session.user=undefined;
+    res.redirect("/");
 });
 
 /*app.get('*',(req,res)=>{
