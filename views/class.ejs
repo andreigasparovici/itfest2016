@@ -27,7 +27,12 @@
     $(document).ready(function() {
 		$.getJSON('/api/class/<%=event._id%>/events',function(data){
 			$('#calendar').fullCalendar({
-				editable: true,
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                defaultView: 'agendaDay',
 				eventLimit: true,
 				events: data
 			});
