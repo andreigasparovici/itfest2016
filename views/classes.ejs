@@ -113,10 +113,10 @@ var jsonUrl = "/api/classes/";
 if(arr.length == 3)
   jsonUrl += arr[arr.length - 1];
 $('#searchTerm').autocomplete({
-    source: jsonUrl,
-    select: function (event, ui) {
-        window.location = ui.item.url;
-    }
+  source: jsonUrl,
+  select: function (event, ui) {
+      window.location = ui.item.url;
+  }
 });
 </script>
 
