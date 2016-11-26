@@ -212,12 +212,19 @@ app.get('/events/add/:classid',function(req,res){
     });
 });
 
+var Event = require('./models/event');
+
 app.post('/events/add/:classid',function(req,res){
-    
+    Event.collection.insert({
+        'name':req.body.name,
+        'class':req.params.classid,
+        'eventType':req.body.type,
+        'room':req.body.room
+    });
+    res.redirect("/class/"+req.params.classid);
 });
 
 app.use('/subscribe',require('./routes/subscribe'));
-
 
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);

@@ -19,6 +19,8 @@
             $("#email").val(email);
             $("#myform").submit();
         }
+
     }).bind('focus', function(){ $(this).autocomplete("search"); } );
+
 </script>
 <% include partials/footer %>
