@@ -83,10 +83,12 @@ app.get('/class/:eventId',(req,res)=>{
         var isAdmin=false;
         if(doc.moderator){
             doc.moderator.forEach(function(m){
+                console.log(m);
+                console.log(req.session.user);
                 if(m.email==req.session.user.email)
                     isAdmin=true;
             });
-            }
+        }
 
         var subs=[];
         var b="Subscribe";
@@ -184,6 +186,25 @@ app.post('/moderator/add/:classid',function(req,res){
             });            
         });
 });
+
+
+app.get('/moderator/remove/me/:classid',function(req,res){
+    Class.findById(req.params.classid,function(err,doc){
+        if(doc.moderator.length>1){
+            doc.moderator.forEach(function(mod){
+                if(mod.email == req.session.user.email)
+                {
+                    var i = doc.moderator.indexOf(mod);
+                    doc.moderator.splice(i, i + 1);
+                }
+            });
+        }
+        Class.update({"_id" : mongoose.Types.ObjectId(req.params.classid)}, { $set: { moderator: doc.moderator}}, function(){
+            res.redirect("/class/"+req.params.classid);
+        });   
+    });
+});
+
 
 app.use('/subscribe',require('./routes/subscribe'));
 
