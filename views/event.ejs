@@ -10,34 +10,10 @@
         <h1><%=event.name%></h1>
         <h4><%=event.host%></h4>
         <p><%=event.description%></p>
-
-        <hr>
-        <button class="btn btn-primary">Inscrie-te/Anuleaza inscrierea</button>
-        <button class="btn btn-warning">Modifica</button>
-        <button class="btn btn-danger">Sterge</button>
-
-        <hr>
-
-        <div id="calendar"></div>
+        <p>Starting date/hour - ending date/hour</p>
+        <p>Comments will go here</p>
      </div>
     
 </div>
-
-<script>
-    $(document).ready(function() {
-		$.getJSON('/api/event/<%=event._id%>/instances',function(data){
-			$('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-				eventLimit: true,
-				events: data
-			});
-			console.log(data);
-		});
-    });
-</script>
 
 <% include partials/footer %>
