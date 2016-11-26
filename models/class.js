@@ -14,15 +14,7 @@ var classSchema = new Schema({
         type: String,
         required: true
     },
-    room: {
-        type: Schema.Types.ObjectId,
-        required: true
-    },
     host: {
-        type: String,
-        required: true
-    },
-    eventType: {
         type: String,
         required: true
     },

@@ -12,7 +12,12 @@ var eventSchema = new Schema({
     eventType: {
         type: String,
         required: true
+    },
+
+    room: {
+        type: Schema.Types.ObjectId,
+        required: true
     }
 });
 
-module.exports = mongoose.model("Event", classSchema, 'event');
+module.exports = mongoose.model("Event", eventSchema, 'event');
