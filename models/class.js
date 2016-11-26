@@ -20,6 +20,9 @@ var classSchema = new Schema({
     },
     recurring: {
         type: Number,
+    },
+    university:{
+        type:String
     }
 });
 

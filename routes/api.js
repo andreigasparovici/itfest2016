@@ -39,9 +39,9 @@ router.get('/university/:university/classes/',(req,res)=>{
         }
         var starting = req.query.term;
         if (starting)
-            var query = Class.find({"name": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}, "university": mongoose.Types.ObjectId(university._id)});
+            var query = Class.find({"name": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}, "university": university.name});
         else
-            var query = Class.find({"university": mongoose.Types.ObjectId(university._id)});
+            var query = Class.find({"university": university.name});
         query.select("name");
         query.exec(function(err, classes){
             if (err) return handleError(err);

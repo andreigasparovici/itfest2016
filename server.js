@@ -86,9 +86,25 @@ app.get('/logout',(req,res)=>{
     res.redirect("/");
 });
 
+var Events = require('./models/class');
+
 app.get('/classes',(req,res)=>{
-    res.render("classes",{
-        user: req.session.user
+   Events.find({},function(err,docs){
+        res.render("classes",{
+            events: docs,
+            user: req.session.user
+        });
+    });
+});
+
+app.get('/classes/:university',(req,res)=>{
+    Events.find({
+        "university":req.params.university
+    },function(err,docs){
+        res.render("classes",{
+            events: docs,
+            user: req.session.user
+        });
     });
 });
 
