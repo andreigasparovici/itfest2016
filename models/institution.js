@@ -18,10 +18,6 @@ var institutionSchema = new Schema({
         type: String,
         required: true
     },
-    institutionType: {
-        type: String,
-        required: true
-    },
     courses: {
         type: Array
     },
