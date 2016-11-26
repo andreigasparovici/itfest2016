@@ -40,6 +40,11 @@
   .table-responsive tr:first-child {
     border: 0;
   }
+
+.table-responsive > tbody > tr {
+    width: 100%;
+}
+
   .table-responsive > tbody > tr > td {
     padding-left: 50%;
     border-top-color: rgba(221, 221, 221, 0.5);
