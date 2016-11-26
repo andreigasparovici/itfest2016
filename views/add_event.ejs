@@ -4,22 +4,44 @@
 
 <h1>Add a new course</h1>
 
-<form action="/events/add/<%=classid%>" method="post" class="form-horizontal">
+<form action="/events/add" method="post" class="form-horizontal">
     <div class="form-group">
-        <label class="control-label">Title:</label>
-        <input type="text" class="form-control">
+        <label class="control-label">Title:
+        <input type="text" class="form-control"></label>
     </div>
     <div class="form-group">
-        <label class="control-label">Description:</label>
+        <label class="control-label">Description:
         <textarea class="form-control"></textarea>
     </div>
     <div class="form-group">
-        <label class="control-label">Starting date:</label>
-        <input type="date" class="form-control">
+        <div class='input-group date' id='datetimepicker1'>
+            <input type='text' class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
     </div>
     <div class="form-group">
-        <label class="control-label">Ending date:</label>
-        <input type="date" class="form-control">
+        <div class='input-group date' id='datetimepicker2'>
+            <input type='text' class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker();
+            });
+        </script>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Ending date:
+        <input type="date" class="form-control"></label>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
