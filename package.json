@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/andreigasparovici/itfest2016/issues"
   },
-  "homepage": "https://github.com/andreigasparovici/itfest2016#readme"
+  "homepage": "https://github.com/andreigasparovici/itfest2016#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "csurf": "^1.9.0",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "helmet": "^3.1.0",
+    "mongoose": "^4.7.0"
+  }
 }
