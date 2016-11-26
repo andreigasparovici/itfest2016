@@ -90,7 +90,7 @@
           <%  events.forEach(function(event){ %>
             <tr>
             <td class="valign-middle" data-label="Title">
-              <a href="/event/<%=event._id%>"><%=event.name%></a>
+              <a href="/class/<%=event._id%>"><%=event.name%></a>
             </td>
             <td class="valign-middle" data-label="Type">
               <%=event.eventType%>
@@ -110,7 +110,7 @@
 </div>
 <script>
 $('#searchTerm').autocomplete({
-    source: "/api/classes",
+    source: "/api/classes/<%=event.university%>",
     select: function (event, ui) {
         window.location = ui.item.url;
     }
