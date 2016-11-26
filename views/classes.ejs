@@ -17,7 +17,6 @@
 
   <div class="row">
 
-    <!-- filter sidebar -->
     <div id="filter-sidebar" class="col-xs-6 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar">
 
       <div>
@@ -109,8 +108,9 @@
   </div>
 </div>
 <script>
+var arr=window.location.pathname.split('/');
 $('#searchTerm').autocomplete({
-    source: "/api/classes/<%=event.university%>",
+    source: "/api/classes/"+arr[arr.length-1],
     select: function (event, ui) {
         window.location = ui.item.url;
     }
