@@ -16,14 +16,15 @@ function getInstitutions(criteria)
 }
 
 router.get('/institution',csrfProtection,(req,res)=>{
-    Institution.find({}, function(err, institutions){
-        res.json(institutions);
-    });
-});
-
-router.get('/institution/:institution_start',csrfProtection,(req,res)=>{
-    Institution.find({name: {$regex : new RegExp("^" + req.params.institution_start.toLowerCase(), "i")}}, function(err, institutions){
-        res.json(institutions);
+    var query = Institution.find({"name": {$regex : new RegExp("^" + req.query.term.toLowerCase(), "i")}});
+    query.select("name");
+    query.exec(function(err, institutions){
+        if (err) return handleError(err);
+        var v=[];
+        institutions.forEach(function(i){
+            v.push({value : i.name, url : "/university/" + i.name});
+        })
+        res.json(v);
     });
 });
 
