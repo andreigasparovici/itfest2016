@@ -162,7 +162,9 @@ app.get('/classes/:university',(req,res)=>{
     });
 });
 
-//app.use('/')
+app.get('/moderator/add/:classid',function(req,res){
+    
+});
 
 app.use('/subscribe',require('./routes/subscribe'));
 
