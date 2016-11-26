@@ -110,7 +110,7 @@
 </div>
 <script>
 $('#searchTerm').autocomplete({
-    source: "/api/classes",
+    source: "/api/classes/<%=event.university%>",
     select: function (event, ui) {
         window.location = ui.item.url;
     }
