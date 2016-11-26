@@ -163,17 +163,26 @@ app.get('/classes/:university',(req,res)=>{
 });
 
 app.get('/moderator/add/:classid',function(req,res){
+    if(!req.session.user){
+        res.redirect("/login");
+        return;
+    }
     res.render("create_moderator",{
-        classid: req.params.classid
+        classid: req.params.classid,
+        user: req.session.user
     });
 });
 app.post('/moderator/add/:classid',function(req,res){
-        Class.findById(classid,function(err,doc){
-        doc.moderators.push(req.session.user);
-        Class.update({"_id" : mongoose.Types.ObjectId(classid)}, { $set: { moderators: doc.moderators}}, function(){
-            res.redirect("/class/"+classid);
+        Class.findById(req.params.classid,function(err,doc){
+            User.findOne({
+                "email":req.body.email
+            },function(err,user){
+                doc.moderator.push(user);
+                Class.update({"_id" : mongoose.Types.ObjectId(req.params.classid)}, { $set: { moderator: doc.moderator}}, function(){
+                    res.redirect("/class/"+req.params.classid);
+                });
+            });            
         });
-    });
 });
 
 app.use('/subscribe',require('./routes/subscribe'));
