@@ -11,12 +11,39 @@ var router = express.Router();
 
 router.get('/',(req,res)=>{
     res.render("confirm",{
-        "needinput":true
+        "needinput":true,
+        "user":req.session.user
+    });
+});
+
+router.get('/resend',csrfProtection,(req,res)=>{
+    res.render("confirm-resend",{
+        csrfToken: req.csrfToken()
+    });
+});
+
+router.post('/resend',csrfProtection,(req,res)=>{
+    if(!req.body.email || !validator.validate(req.body.email)){
+        req.flash("error","Invalid email!");
+        res.redirect("/confirm/resend");
+        return;
+    }
+    User.findOne({
+        'email':req.body.email,
+        'confirmed':false
+    },(err,doc)=>{
+        if(!doc){
+            req.flash("error","Invalid email!");
+            res.redirect("/confirm/resend");
+            return;
+        }
+
     });
 });
 
 router.get('/:confirmString',(req,res)=>{
     var confirmString=req.params.confirmString;
+    console.log(confirmString);
     User.findOne({
         'confirmKey':confirmString,
         'confirmed':false
@@ -25,15 +52,23 @@ router.get('/:confirmString',(req,res)=>{
             res.render("confirm",{
                 "needinput":null,
                 "error":"Invalid confirmation key!",
-                "success":null
+                "success":null,
+                "user":req.session.user
             });
         } else {
-            user.confirmed=true;
-            user.save();
-            res.render("confirm",{
-                "needinput":null,
-                "success":"Email confirmed successfully!",
-                "error":null
+            User.update({ 
+                'confirmKey':confirmString,
+                'confirmed':false
+            }, {
+                $set: { confirmed: true }
+            }, 
+            function(){
+                res.render("confirm",{
+                    "needinput":null,
+                    "success":"Email confirmed successfully!",
+                    "error":null,
+                    "user":req.session.user
+                });
             });
         }
     });
