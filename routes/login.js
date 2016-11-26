@@ -11,18 +11,14 @@ var router = express.Router();
 
 router.get('/',csrfProtection,(req,res)=>{
     res.render('login',{
-        csrfToken: req.csrfToken() 
+        csrfToken: req.csrfToken(),
+        flash: req.flash()
     });
 });
 
 router.post('/',csrfProtection,(req,res)=>{
     if(!req.body.email || !validator.validate(req.body.email)){
         req.flash("error","Invalid email!");
-        res.redirect("/login");
-        return;
-    }
-    if(!req.body.password || !req.body.confirmPassword || req.body.password!=req.body.confirmPassword){
-        req.flash("error","Invalid password!");
         res.redirect("/login");
         return;
     }
