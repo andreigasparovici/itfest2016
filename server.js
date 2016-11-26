@@ -68,7 +68,7 @@ app.get('/classes',(req,res)=>{
     });
 });
 
-
+app.use('/users/',require('./routes/usersByCourseApi'));
 
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);
