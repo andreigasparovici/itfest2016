@@ -1,16 +1,33 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var classSchema = new Schema({
-    name:{
-        type: String
+    date:{
+        type: Date,
+        required: true
     },
-    university:{
+    moderator:{
         type: Schema.Types.ObjectId,
         required: true
     },
-    students: {
-        type: Array
+    name: {
+        type: String,
+        required: true
+    },
+    room: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
+    host: {
+        type: String,
+        required: true
+    },
+    eventType: {
+        type: String,
+        required: true
+    },
+    recurring: {
+        type: Number,
     }
 });
 
