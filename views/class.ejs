@@ -32,19 +32,17 @@
 
         <hr>
 
+        <h3>Registered users:</h3>
+
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
                 <th>Email</th>
             </tr>
             </thead>
             <tbody>
             <% users.forEach(function(sub){ %>
             <tr>
-                <td><%=sub.firstname%></td>
-                <td><%=sub.surname%></td>
                 <td><%=sub.email%></td>
             </tr>
             <% } ); %>
