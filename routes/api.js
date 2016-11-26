@@ -70,8 +70,8 @@ router.get('/classes',(req,res)=>{
     });
 });
 
-router.get('/class/:class/events/',(req,res)=>{
-    Event.findOne({ '_id': mongoose.Types.ObjectId(req.params.event) }, 'name', function (err, _class) {
+router.get('/class/:class/events',(req,res)=>{
+    Class.findOne({ '_id': mongoose.Types.ObjectId(req.params.class) }, 'name', function (err, _class) {
         if (err) return handleError(err);
         if (!_class) 
         {

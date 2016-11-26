@@ -108,6 +108,7 @@
   </div>
 </div>
 <script>
+<<<<<<< HEAD
 var arr=window.location.pathname.split('/');
 if(arr.length==3){
   $('#searchTerm').autocomplete({
@@ -117,6 +118,18 @@ if(arr.length==3){
       }
   });
 }
+=======
+var arr = window.location.pathname.split('/');
+var jsonUrl = "/api/classes/";
+if(arr.length == 3)
+  jsonUrl += arr[arr.length - 1];
+$('#searchTerm').autocomplete({
+    source: jsonUrl,
+    select: function (event, ui) {
+        window.location = ui.item.url;
+    }
+});
+>>>>>>> 85e61c220f315ae2bc259fe22794054accff21a9
 </script>
 
 <% include partials/footer %>
