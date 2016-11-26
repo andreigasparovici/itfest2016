@@ -98,12 +98,13 @@ router.get('/hosts',(req,res)=>{
     if(!starting)
         starting = "";
     var query = User.find({"host" : true, "email": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
-    query.select("name");
+    query.select("email");
     query.exec(function(err, hosts){
+        console.log(hosts);
         if (err) return handleError(err);
         var v=[];
         hosts.forEach(function(i){
-            v.push({value : i.name});
+            v.push({value : i.email});
         })
         res.json(v);
     });
