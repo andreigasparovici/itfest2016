@@ -75,15 +75,15 @@
           </div> 
           <div class="form-group">
             <input type="text" class="form-control" id="searchTerm" placeholder="Search for...">
-          </div> 
-          <button type="submit" class="btn btn-default">Search</button>
+          </div>
         </form> 
 
         <table class="table table-striped table-hover table-responsive">
         <thead>
           <tr>
             <th>Title</th>
-            <th class="align-right">Teacher</th>
+            <th>Type</th>
+            <th class="align-right">Host</th>
           </tr>
         </thead>
         <tbody>
@@ -92,7 +92,10 @@
             <td class="valign-middle" data-label="Title">
               <a href="/event/<%=event._id%>"><%=event.name%></a>
             </td>
-            <td class="valign-middle align-right" data-label="Teacher">
+            <td class="valign-middle" data-label="Type">
+              <%=event.eventType%>
+            </td>
+            <td class="valign-middle align-right" data-label="Host">
               <%=event.host%>
             </td>
           </tr>
@@ -105,5 +108,13 @@
 
   </div>
 </div>
+<script>
+$('#searchTerm').autocomplete({
+    source: "/api/event",
+    select: function (event, ui) {
+        window.location = ui.item.url;
+    }
+});
+</script>
 
 <% include partials/footer %>
