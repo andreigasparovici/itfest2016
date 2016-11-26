@@ -102,10 +102,29 @@ app.get('/class/:eventId',(req,res)=>{
 });
 
 app.get('/class/:univId/add',function(req,res){
+    if(!req.session.user){
+        res.redirect("/login");
+        return;
+    }
     res.render("create_new_class",{
         user: req.session.user,
         univId: req.params.univId
     });
+});
+
+var Class=require('./models/class');
+
+app.post('/class/:univId/add',function(req,res){
+    require("./models/university").findOne({_id:req.params.univId},function(err,doc){
+        Class.collection.insert({
+            "moderator":req.session.user,
+            "name":req.body.title,
+            "description":req.body.description,
+            "host":req.body.host,
+            "university":doc.name
+        });
+        res.redirect("/classes/"+doc.name);
+    });    
 });
 
 app.get('/logout',(req,res)=>{
