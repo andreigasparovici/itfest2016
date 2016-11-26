@@ -71,13 +71,6 @@ var confirmRoutes = require('./routes/confirm');
 
 app.use('/confirm',confirmRoutes);
 
-/*app.get('*',(req,res)=>{
-    res.render('index');
-});
-*/
-
-
-
 app.use(require('./routes/university'));
 
 app.get('/classes',(req,res)=>{
