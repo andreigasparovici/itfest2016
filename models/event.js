@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var eventSchema = new Schema({
-    name:{
+    title:{
         type: String
     },
     class: {
@@ -16,7 +16,15 @@ var eventSchema = new Schema({
     room: {
         type: Schema.Types.ObjectId,
         required: true
-    }
+    },
+    start: {
+        type: Date,
+        required: true
+    },
+    end: {
+        type: Date,
+        required: true
+    },
 });
 
 module.exports = mongoose.model("Event", eventSchema, 'event');

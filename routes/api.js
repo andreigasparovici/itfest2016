@@ -83,6 +83,7 @@ router.get('/class/:class/events',(req,res)=>{
         query.select("title start end");
         query.exec(function(err, instances){
             if (err) return handleError(err);
+            console.log(instances);
             res.json(instances);
         });
     })
