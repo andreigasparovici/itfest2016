@@ -1,0 +1,19 @@
+{
+  "name": "hackathon",
+  "version": "1.0.0",
+  "description": "Hackathon IT fest 2016 - web",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreigasparovici/itfest2016.git"
+  },
+  "author": "Andrei Gasparovici",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/andreigasparovici/itfest2016/issues"
+  },
+  "homepage": "https://github.com/andreigasparovici/itfest2016#readme"
+}
