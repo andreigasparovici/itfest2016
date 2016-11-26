@@ -18,7 +18,10 @@ var universitySchema = new Schema({
         type: String,
         required: true
     },
-    courses: {
+    moderator: {
+        type: Schema.Types.ObjectId
+    },
+    events: {
         type: Array
     },
     rooms: {

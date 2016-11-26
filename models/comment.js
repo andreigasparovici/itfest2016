@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
     user: {
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     },
     content: {
@@ -20,7 +20,7 @@ var commentSchema = new Schema({
         default: Date.now()
     },
     instance: {
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     }
 });
