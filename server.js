@@ -29,7 +29,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
@@ -40,6 +40,12 @@ app.use('/assets',express.static(path.join(__dirname,'assets')));
 
 app.get('/',(req,res)=>{
     res.render('index',{
+        user: req.session.user
+    });
+});
+
+app.get('/university/:id',(req,res)=>{
+    res.render('university',{
         user: req.session.user
     });
 });
