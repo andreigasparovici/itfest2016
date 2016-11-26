@@ -45,77 +45,20 @@
     <!-- table container -->
     <div class="col-sm-9">
         <div class="row text-center shown-university">
-            <div class="col-sm-6"> 
-                <div class="thumbnail">
-                    <img src=" https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/b_AllSoulsquad.jpg?itok=N1GzQbrQ ">
-                    <div class="caption">
-                        <h4> Nume </h4>
-                    </div>
-                    <p>
-                        <a class="btn btn-primary" href="/" >Mai multe informatii</a>
-                    </p>   
-                </div>
-            </div>
 
-            <div class="col-sm-6"> 
-                <div class="thumbnail">
-                    <img src=" https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/b_AllSoulsquad.jpg?itok=N1GzQbrQ ">
-                    <div class="caption">
-                        <h4> Nume </h4>
+            <% universities.forEach(function(u){ %>
+                <div class="col-sm-6"> 
+                    <div class="thumbnail">
+                        <img src=" https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/b_AllSoulsquad.jpg?itok=N1GzQbrQ ">
+                        <div class="caption">
+                            <h4><%=u.name%></h4>
+                        </div>
+                        <p>
+                            <a class="btn btn-primary" href="/university/<%=u.name%>" >Mai multe informatii</a>
+                        </p>   
                     </div>
-                    <p>
-                        <a class="btn btn-primary" href="/" >Mai multe informatii</a>
-                    </p>   
                 </div>
-            </div>
-
-            <div class="col-sm-6"> 
-                <div class="thumbnail">
-                    <img src=" http://www.gla.ac.uk/media/media_328640_en.jpg ">
-                    <div class="caption">
-                        <h4> Nume </h4>
-                    </div>
-                    <p>
-                        <a class="btn btn-primary" href="/" >Mai multe informatii</a>
-                    </p>   
-                </div>
-            </div>
-
-            <div class="col-sm-6"> 
-                <div class="thumbnail">
-                    <img src=" https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/b_AllSoulsquad.jpg?itok=N1GzQbrQ ">
-                    <div class="caption">
-                        <h4> Nume </h4>
-                    </div>
-                    <p>
-                        <a class="btn btn-primary" href="/" >Mai multe informatii</a>
-                    </p>   
-                </div>
-            </div>
-
-            <div class="col-sm-6"> 
-                <div class="thumbnail">
-                    <img src=" https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/b_AllSoulsquad.jpg?itok=N1GzQbrQ ">
-                    <div class="caption">
-                        <h4> Nume </h4>
-                    </div>
-                    <p>
-                        <a class="btn btn-primary" href="/" >Mai multe informatii</a>
-                    </p>   
-                </div>
-            </div>
-
-            <div class="col-sm-6"> 
-                <div class="thumbnail">
-                    <img src=" https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/b_AllSoulsquad.jpg?itok=N1GzQbrQ ">
-                    <div class="caption">
-                        <h4> Nume </h4>
-                    </div>
-                    <p>
-                        <a class="btn btn-primary" href="/" >Mai multe informatii</a>
-                    </p>   
-                </div>
-            </div>
+            <% }) %>
             
         </div>
     </div>

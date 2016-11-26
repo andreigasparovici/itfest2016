@@ -70,11 +70,9 @@ app.use('/confirm',confirmRoutes);
 });
 */
 
-app.get('/dashboard',(req,res)=>{
-    res.render("universities",{
-        user: req.session.user
-    });
-});
+
+
+app.use(require('./routes/university'));
 
 app.get('/classes',(req,res)=>{
     res.render("classes",{
