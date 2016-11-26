@@ -13,11 +13,12 @@
 <script>
     $('#email').autocomplete({
         source: '/api/emails',
+        minLength: 0,
         select: function (event, ui) {
             var email=ui.item.value;
             $("#email").val(email);
             $("#myform").submit();
         }
-    }).bind('focus', function(){ $(this).autocomplete(""); } );;
+    }).bind('focus', function(){ $(this).autocomplete("search"); } );
 </script>
 <% include partials/footer %>

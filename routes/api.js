@@ -100,7 +100,6 @@ router.get('/emails',(req,res)=>{
     var query = User.find({"email": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
     query.select("email");
     query.exec(function(err, users){
-        console.log(users);
         if (err) return handleError(err);
         var v=[];
         users.forEach(function(i){
