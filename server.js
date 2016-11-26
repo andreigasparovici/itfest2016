@@ -7,7 +7,11 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const csrf = require('csurf');
 
+const mongoose = require('mongoose');
+
 const config = require('./config');
+
+mongoose.connect(config.MONGO_URL);
 
 var app = express();
 
