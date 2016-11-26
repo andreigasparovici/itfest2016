@@ -48,9 +48,13 @@ var loginRoutes = require('./routes/login');
 
 var signupRoutes = require('./routes/signup');
 
+var apiRoutes = require('./routes/api')
+
 app.use('/login',loginRoutes);
 
 app.use('/signup', signupRoutes);
+
+app.use('/api', apiRoutes);
 
 app.get('/logout',(req,res)=>{
     req.session.user=undefined;
