@@ -76,6 +76,12 @@ app.get('/dashboard',(req,res)=>{
     });
 });
 
+app.get('/classes',(req,res)=>{
+    res.render("classes",{
+        user: req.session.user
+    });
+});
+
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);
 });

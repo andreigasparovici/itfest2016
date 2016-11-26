@@ -1,5 +1,5 @@
 <% include partials/header %>
-
+<div class="container">
 <% if(!needinput){ %>
 
     <% if(error){ %>
@@ -19,12 +19,11 @@
     }
 
     </script>
-    <div class="container">
+    
         <label>Enter your confirmation key:</label><br>
         <input type="text" id="key" class="form-control"/><br>
         <button onclick="redirect()" class="btn btn-primary">Confirm</button>
-    </div>
     
-
-
+    
 <% } %>
+</div>
