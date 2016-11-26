@@ -44,7 +44,8 @@ router.post('/',csrfProtection,(req,res)=>{
         User.collection.insert({
            'email':req.body.email,
            'password':bcrypt.hashSync(req.body.password),
-           'confirmKey':confirmKey
+           'confirmKey':confirmKey,
+           'confirmed':false
         });
 
         const config = require('../config');
@@ -57,7 +58,7 @@ router.post('/',csrfProtection,(req,res)=>{
 
         var mailOptions = {
             from: '"GCourse" <'+config.GMAIL_ID+'@gmail.com>',
-            to: 'bar@blurdybloop.com, baz@blurdybloop.com',
+            to: req.body.email,
             subject: 'Account confirmation',
             text: 'Here is your confirmation key: '+confirmKey,
             html: 'Here is your confirmation key: '+confirmKey,
