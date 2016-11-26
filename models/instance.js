@@ -2,16 +2,20 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var instanceSchema = new Schema({
-    startdate: {
+    start: {
         type: Date,
         required: true
     },
-    enddate: {
+    end: {
         type: Date,
         required: true
     },
     event: {
         type: Schema.Types.ObjectId,
+        required: true
+    },
+    title: {
+        type: String,
         required: true
     }
 });

@@ -8,7 +8,8 @@ var csrfProtection = csrf({ cookie: true });
 
 var University = require('../models/university');
 var Class = require('../models/class');
-var Event = require
+var Event = require('../models/event');
+var Instance = require('../models/instance');
 
 var router = express.Router();
 
@@ -77,6 +78,23 @@ router.get('/host',(req,res)=>{
         })
         res.json(v);
     });
+});
+
+router.get('/event/:event/instances/',(req,res)=>{
+    Event.findOne({ '_id': mongoose.Types.ObjectId(req.params.event) }, 'name', function (err, event) {
+        if (err) return handleError(err);
+        if (!event) 
+        {
+            res.json({"error": "Event doesn't exist."});
+            return;
+        }
+        var query = Instance.find({"event": mongoose.Types.ObjectId(event._id)});
+        query.select("title start end");
+        query.exec(function(err, instances){
+            if (err) return handleError(err);
+            res.json(instances);
+        });
+    })
 });
 
 router.get('/users/:courseId',(req,res)=>{
