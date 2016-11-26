@@ -54,31 +54,31 @@ router.get('/university/:university/classes/',(req,res)=>{
     })
 });
 
-router.get('/event',(req,res)=>{
+router.get('/classes',(req,res)=>{
     starting = req.query.term;
     if(!starting)
         starting = "";
-    var query = Event.find({"name": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
+    var query = Class.find({"name": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
     query.select("name");
-    query.exec(function(err, events){
+    query.exec(function(err, classes){
         if (err) return handleError(err);
         var v=[];
-        events.forEach(function(i){
-            v.push({value : i.name, url : "/event/" + i._id});
+        classes.forEach(function(i){
+            v.push({value : i.name, url : "/class/" + i._id});
         })
         res.json(v);
     });
 });
 
-router.get('/event/:event/instances/',(req,res)=>{
-    Event.findOne({ '_id': mongoose.Types.ObjectId(req.params.event) }, 'name', function (err, event) {
+router.get('/class/:class/events/',(req,res)=>{
+    Event.findOne({ '_id': mongoose.Types.ObjectId(req.params.event) }, 'name', function (err, _class) {
         if (err) return handleError(err);
-        if (!event) 
+        if (!_class) 
         {
-            res.json({"error": "Event doesn't exist."});
+            res.json({"error": "Class doesn't exist."});
             return;
         }
-        var query = Instance.find({"event": mongoose.Types.ObjectId(event._id)});
+        var query = Event.find({"class": mongoose.Types.ObjectId(_class._id)});
         query.select("title start end");
         query.exec(function(err, instances){
             if (err) return handleError(err);
