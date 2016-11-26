@@ -163,7 +163,17 @@ app.get('/classes/:university',(req,res)=>{
 });
 
 app.get('/moderator/add/:classid',function(req,res){
-    
+    res.render("create_moderator",{
+        classid: req.params.classid
+    });
+});
+app.post('/moderator/add/:classid',function(req,res){
+        Class.findById(classid,function(err,doc){
+        doc.moderators.push(req.session.user);
+        Class.update({"_id" : mongoose.Types.ObjectId(classid)}, { $set: { moderators: doc.moderators}}, function(){
+            res.redirect("/class/"+classid);
+        });
+    });
 });
 
 app.use('/subscribe',require('./routes/subscribe'));

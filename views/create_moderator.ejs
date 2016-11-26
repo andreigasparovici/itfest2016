@@ -3,11 +3,20 @@
 <div class="container">
     <div class="container">
         <div class="jumbotron">
-            <form action="">
-                <input type="text">
+            <form action="/moderator/add/<%=classid%>" method="post" id="myform">
+                <input type="text" class="form-control" name="email" id="email"/>
             </form>
         </div>
     </div>
 </div>
-
+<script>
+    $('#email').autocomplete({
+        source: '/api/emails',
+        select: function (event, ui) {
+            var email=ui.item.value;
+            $("#email").val(email);
+            $("#myform").submit();
+        }
+    });
+</script>
 <% include partials/header %>
