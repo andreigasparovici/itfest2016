@@ -17,7 +17,7 @@
             var email=ui.item.value;
             $("#email").val(email);
             $("#myform").submit();
-        }.bind("focus", function() {this}.autocomplete(""))
+        }.bind("focus", function() {$(this).autocomplete("");})
     });
 </script>
 <% include partials/footer %>
