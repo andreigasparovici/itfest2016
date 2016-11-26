@@ -54,22 +54,21 @@ app.use('/login',loginRoutes);
 app.use('/signup', signupRoutes);
 app.use('/api', apiRoutes);
 app.use('/confirm',require('./routes/confirm'));
+app.use('/confirm',require('./routes/confirm'));
+app.use(require('./routes/university'));
+
 app.get('/logout',(req,res)=>{
     req.session.user=undefined;
     res.redirect("/");
 });
-
-var confirmRoutes = require('./routes/confirm');
-
-app.use('/confirm',confirmRoutes);
-
-app.use(require('./routes/university'));
 
 app.get('/classes',(req,res)=>{
     res.render("classes",{
         user: req.session.user
     });
 });
+
+
 
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);
