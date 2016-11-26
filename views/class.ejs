@@ -12,14 +12,18 @@
         <p><%=event.description%></p>
 
         <hr>
-        <a class="btn btn-primary" href="/subscribe/<%=event._id%>">
-            <%=buttonText%>
-        </a>
-        <% if(isAdmin){ %>
-            <button class="btn btn-primary">New moderator</button>
-            <button class="btn btn-warning">Update</button>
-            <button class="btn btn-danger">Delete</button>
-        <% } %>
+        <div>
+            <a class="btn btn-primary" href="/subscribe/<%=event._id%>">
+                <%=buttonText%>
+            </a>
+            <% if(isAdmin){ %>
+                <button class="btn btn-primary" id="newmoderator">New moderator</button>
+                <button class="btn btn-warning">Update</button>
+                <button class="btn btn-danger">Delete</button>
+            <% } %>
+        </div>
+
+        
         <hr>
 
         <div id="calendar"></div>
