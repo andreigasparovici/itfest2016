@@ -54,27 +54,17 @@ router.get('/university/:university/classes/',(req,res)=>{
     })
 });
 
-router.get('/rooms',(req,res)=>{
-    var query = University.find({"name": {$regex : new RegExp("^" + req.query.term.toLowerCase(), "i")}});
+router.get('/event',(req,res)=>{
+    starting = req.query.term;
+    if(!starting)
+        starting = "";
+    var query = Event.find({"name": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
     query.select("name");
-    query.exec(function(err, universities){
+    query.exec(function(err, events){
         if (err) return handleError(err);
         var v=[];
-        universities.forEach(function(i){
-            v.push(i.name);
-        })
-        res.json(v);
-    });
-});
-
-router.get('/host',(req,res)=>{
-    var query = University.find({"name": {$regex : new RegExp("^" + req.query.term.toLowerCase(), "i")}});
-    query.select("name");
-    query.exec(function(err, universities){
-        if (err) return handleError(err);
-        var v=[];
-        universities.forEach(function(i){
-            v.push(i.name);
+        events.forEach(function(i){
+            v.push({value : i.name, url : "/event/" + i._id});
         })
         res.json(v);
     });
