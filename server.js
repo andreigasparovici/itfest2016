@@ -213,7 +213,7 @@ app.get('/events/add/:classid',function(req,res){
 });
 
 app.post('/events/add/:classid',function(req,res){
-
+    
 });
 
 app.use('/subscribe',require('./routes/subscribe'));
