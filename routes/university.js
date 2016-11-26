@@ -3,13 +3,17 @@ var router = express.Router();
 
 var Univ=require('../models/university');
 
-router.get('/dashboard',(req,res)=>{
-    
-});
-
 router.get('/university/:id',(req,res)=>{
-    res.render('university',{
-        user: req.session.user
+    Univ.findOne({"name":req.params.id},(err,doc)=>{
+        if(doc){
+            res.render('university',{
+                user: req.session.user,
+                university: doc
+            });
+            console.log(doc);
+        } else {
+            res.send("Not found!");
+        }
     });
 });
 
