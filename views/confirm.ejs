@@ -1,3 +1,4 @@
+<% include partials/header %>
 
 <% if(!needinput){ %>
 
@@ -18,10 +19,12 @@
     }
 
     </script>
-
-    <label>Enter your confirmation key:</label>
-    <input type="text" id="key"/>
-    <button onclick="redirect()">Confirm</button>
+    <div class="container">
+        <label>Enter your confirmation key:</label><br>
+        <input type="text" id="key" class="form-control"/><br>
+        <button onclick="redirect()" class="btn btn-primary">Confirm</button>
+    </div>
+    
 
 
 <% } %>
