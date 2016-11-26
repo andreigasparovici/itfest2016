@@ -9,8 +9,34 @@ var User = require('../models/user');
 
 var router = express.Router();
 
-router.get('/',csrfProtection,(req,res)=>{
-    
+router.get('/',(req,res)=>{
+    res.render("confirm",{
+        "needinput":true
+    });
+});
+
+router.get('/:confirmString',(req,res)=>{
+    var confirmString=req.params.confirmString;
+    User.findOne({
+        'confirmKey':confirmString,
+        'confirmed':false
+    },(err,user)=>{
+        if(!user){
+            res.render("confirm",{
+                "needinput":null,
+                "error":"Invalid confirmation key!",
+                "success":null
+            });
+        } else {
+            user.confirmed=true;
+            user.save();
+            res.render("confirm",{
+                "needinput":null,
+                "success":"Email confirmed successfully!",
+                "error":null
+            });
+        }
+    });
 });
 
 

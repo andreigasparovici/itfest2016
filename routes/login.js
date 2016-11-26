@@ -37,6 +37,10 @@ router.post('/',csrfProtection,(req,res)=>{
             res.redirect("/login");
             return;
         }
+        if(!user.confirmed){
+            res.redirect("/confirm");
+            return;
+        }
         req.session.user=user;
         res.redirect('/');
     });

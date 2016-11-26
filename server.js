@@ -57,10 +57,18 @@ app.get('/logout',(req,res)=>{
     res.redirect("/");
 });
 
+var confirmRoutes = require('./routes/confirm');
+
+app.use('/confirm',confirmRoutes);
+
 /*app.get('*',(req,res)=>{
     res.render('index');
 });
 */
+
+app.get('/dashboard',(req,res)=>{
+    res.render("universities");
+});
 
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);
