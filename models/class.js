@@ -23,7 +23,8 @@ var classSchema = new Schema({
     },
     university:{
         type:String
-    }
+    },
+    students: Array
 });
 
 module.exports = mongoose.model("Class", classSchema, 'class');

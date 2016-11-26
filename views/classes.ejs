@@ -109,12 +109,14 @@
 </div>
 <script>
 var arr=window.location.pathname.split('/');
-$('#searchTerm').autocomplete({
-    source: "/api/classes/"+arr[arr.length-1],
-    select: function (event, ui) {
-        window.location = ui.item.url;
-    }
-});
+if(arr.length==3){
+  $('#searchTerm').autocomplete({
+      source: "/api/classes/"+arr[arr.length-1],
+      select: function (event, ui) {
+          window.location = ui.item.url;
+      }
+  });
+}
 </script>
 
 <% include partials/footer %>

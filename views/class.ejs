@@ -12,7 +12,7 @@
         <p><%=event.description%></p>
 
         <hr>
-        <button class="btn btn-primary">Inscrie-te/Anuleaza inscrierea</button>
+        <a class="btn btn-primary" href="/subscribe/<%=event._id%>">Inscrie-te/Anuleaza inscrierea</a>
         <button class="btn btn-warning">Modifica</button>
         <button class="btn btn-danger">Sterge</button>
 
@@ -31,21 +31,13 @@
             </tr>
             </thead>
             <tbody>
+            <% users.forEach(function(sub){ %>
             <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
+                <td><%=sub.firstname%></td>
+                <td><%=sub.surname%></td>
+                <td><%=sub.email%></td>
             </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
+            <% } ); %>
             </tbody>
         </table>
      </div>

@@ -71,12 +71,25 @@ app.use(require('./routes/university'));
 app.use('/events',require('./routes/events'));
 
 var Events = require('./models/class');
+var User = require('./models/user');
 
 app.get('/class/:eventId',(req,res)=>{
     Events.findById(req.params.eventId,(err,doc)=>{
-        res.render("class",{
-            user: req.session.user,
-            event: doc
+        var subs=[];
+        User.find({},function(err,users){
+            console.log(doc.students);
+            users.forEach(function(user){
+                console.log(user._id);
+                if(doc.students.indexOf(user._id)!=-1){
+                    subs.push(user);
+                }
+            });
+            console.log(subs);
+            res.render("class",{
+                user: req.session.user,
+                event: doc,
+                users: subs
+            });
         });
     });
 });
