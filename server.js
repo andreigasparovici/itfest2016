@@ -82,9 +82,7 @@ app.get('/class/:eventId',(req,res)=>{
         var subs=[];
         var b="Subscribe";
         User.find({},function(err,users){
-            console.log(doc.students);
             users.forEach(function(user){
-                console.log(user._id);
                 if(doc.students.indexOf(user._id)!=-1){
                     subs.push(user);
                     if(user._id==req.session.user._id)
