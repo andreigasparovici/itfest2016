@@ -13,7 +13,10 @@ var Event = require
 var router = express.Router();
 
 router.get('/university',(req,res)=>{
-    var query = University.find({"name": {$regex : new RegExp("^" + req.query.term.toLowerCase(), "i")}});
+    starting = req.query.term;
+    if(!starting)
+        starting = "";
+    var query = University.find({"name": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
     query.select("name");
     query.exec(function(err, universities){
         if (err) return handleError(err);
