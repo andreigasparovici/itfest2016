@@ -17,5 +17,15 @@ router.get('/',(req,res,next)=>{
     });
 });
 
+router.get('/add',(req,res,next)=>{
+    if(!req.session.user || !req.session.user.host)
+        res.redirect("/");
+    else next();
+},(req,res)=>{
+    res.render("addEvent",{
+        user: req.session.user
+    });
+});
+
 
 module.exports=router;
