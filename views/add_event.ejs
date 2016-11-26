@@ -2,9 +2,16 @@
 
 <div class="container">
 
-Adauga un curs
+<h1>Add a new course</h1>
 
-<form action="/events/add" method="post">
+<form action="/events/add" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">Title:<input type="text"></label>
+        <label class="control-label">Description:<textarea></textarea>
+        <label class="control-label">Starting date:<input type="date"></label>
+        <label class="control-label">Ending date:<input type="date"></label>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
 
 
 </form>
