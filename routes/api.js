@@ -79,7 +79,7 @@ router.get('/class/:class/events',(req,res)=>{
             res.json({"error": "Class doesn't exist."});
             return;
         }
-        var query = Event.find({"class": mongoose.Types.ObjectId(_class._id)});
+        var query = Event.find({"class": _class._id});
         query.select("title start end");
         query.exec(function(err, instances){
             if (err) return handleError(err);
