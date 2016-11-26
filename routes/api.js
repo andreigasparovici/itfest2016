@@ -10,7 +10,6 @@ var University = require('../models/university');
 var User = require('../models/user');
 var Class = require('../models/class');
 var Event = require('../models/event');
-var Instance = require('../models/instance');
 
 var router = express.Router();
 

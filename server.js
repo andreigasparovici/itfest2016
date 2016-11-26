@@ -219,7 +219,9 @@ app.post('/events/add/:classid',function(req,res){
         'name':req.body.name,
         'class':req.params.classid,
         'eventType':req.body.type,
-        'room':req.body.room
+        'room':req.body.room,
+        'start':new Date(req.body.startdate),
+        'end':new Date(req.body.enddate)
     });
     res.redirect("/class/"+req.params.classid);
 });
