@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const csrf = require('csurf');
 const validator = require('email-validator');
+const nodemailer = require('nodemailer');
 
 var router = express.Router();
 
@@ -12,7 +13,8 @@ var User = require('../models/user');
 router.get('/',csrfProtection,(req,res)=>{
     res.render('signup',{
         csrfToken: req.csrfToken(),
-        flash: req.flash()
+        flash: req.flash(),
+        user: req.session.user
     });
 });
 
