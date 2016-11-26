@@ -19,7 +19,7 @@ var eventSchema = new Schema({
         required: true
     },
     host: {
-        type: Schema.Types.ObjectId,
+        type: String,
         required: true
     },
     eventType: {

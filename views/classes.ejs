@@ -72,56 +72,21 @@
         <thead>
           <tr>
             <th>Title</th>
-            <th>Teacher</th>
-            <th>Date</th>
-            <th class="align-right">Price</th>
+            <th class="align-right">Teacher</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <%  events.forEach(function(event){ %>
+            <tr>
             <td class="valign-middle" data-label="Title">
-              <a href="#">Analiza matematica</a>
+              <a href="/event/<%=event._id%>"><%=event.name%></a>
             </td>
-            <td class="valign-middle" data-label="Teacher">
-              Gigel Frone
-            </td>
-            <td class="valign-middle" data-label="Date">
-              28 Nov 2016
-            </td>
-            <td class="valign-middle align-right" data-label="Price">
-              $200.0
+            <td class="valign-middle align-right" data-label="Teacher">
+              <%=event.host%>
             </td>
           </tr>
-          
-          <tr>
-            <td class="valign-middle" data-label="Title">
-              <a href="#">Analiza matematica</a>
-            </td>
-            <td class="valign-middle" data-label="Teacher">
-              Gigel Frone
-            </td>
-            <td class="valign-middle" data-label="Date">
-              28 Nov 2016
-            </td>
-            <td class="valign-middle align-right" data-label="Price">
-              $200.0
-            </td>
-          </tr>
-
-          <tr>
-            <td class="valign-middle" data-label="Title">
-              <a href="#">Analiza matematica</a>
-            </td>
-            <td class="valign-middle" data-label="Teacher">
-              Gigel Frone
-            </td>
-            <td class="valign-middle" data-label="Date">
-              28 Nov 2016
-            </td>
-            <td class="valign-middle align-right" data-label="Price">
-              $200.0
-            </td>
-          </tr>
+          <% }); %>
+        
         </tbody>
       </table>
 

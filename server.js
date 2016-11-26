@@ -29,7 +29,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-    app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
@@ -38,17 +38,27 @@ var csrfProtection = csrf({ cookie: true });
 
 app.use('/assets',express.static(path.join(__dirname,'assets')));
 
+var Univ=require('./models/university');
+
 app.get('/',(req,res)=>{
-    res.render('index',{
-        user: req.session.user
-    });
+    if(!req.session.user){
+        res.render('index',{
+            user: req.session.user
+        });
+    } else {
+        Univ.find({},(err,docs)=>{
+            console.log(docs);
+            res.render("dashboard",{
+                user: req.session.user,
+                universities: docs
+            });
+        });
+    }
 });
 
 var loginRoutes = require('./routes/login');
-
 var signupRoutes = require('./routes/signup');
-
-var apiRoutes = require('./routes/api')
+var apiRoutes = require('./routes/api');
 
 app.use('/login',loginRoutes);
 app.use('/signup', signupRoutes);
@@ -56,6 +66,8 @@ app.use('/api', apiRoutes);
 app.use('/confirm',require('./routes/confirm'));
 app.use('/confirm',require('./routes/confirm'));
 app.use(require('./routes/university'));
+
+app.use('/events',require('./routes/events'));
 
 app.get('/logout',(req,res)=>{
     req.session.user=undefined;
@@ -68,7 +80,6 @@ app.get('/classes',(req,res)=>{
     });
 });
 
-app.use('/users/',require('./routes/usersByCourseApi'));
 
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);

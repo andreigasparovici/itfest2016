@@ -8,10 +8,11 @@ var csrfProtection = csrf({ cookie: true });
 
 var University = require('../models/university');
 var Class = require('../models/class');
+var Event = require
 
 var router = express.Router();
 
-router.get('/university',csrfProtection,(req,res)=>{
+router.get('/university',(req,res)=>{
     var query = University.find({"name": {$regex : new RegExp("^" + req.query.term.toLowerCase(), "i")}});
     query.select("name");
     query.exec(function(err, universities){
@@ -24,7 +25,7 @@ router.get('/university',csrfProtection,(req,res)=>{
     });
 });
 
-router.get('/university/:university/classes/',csrfProtection,(req,res)=>{
+router.get('/university/:university/classes/',(req,res)=>{
     University.findOne({ 'name': req.params.university }, 'name', function (err, university) {
         if (err) return handleError(err);
         if (!university) 
@@ -49,7 +50,7 @@ router.get('/university/:university/classes/',csrfProtection,(req,res)=>{
     })
 });
 
-router.get('/rooms',csrfProtection,(req,res)=>{
+router.get('/rooms',(req,res)=>{
     var query = University.find({"name": {$regex : new RegExp("^" + req.query.term.toLowerCase(), "i")}});
     query.select("name");
     query.exec(function(err, universities){
@@ -62,7 +63,7 @@ router.get('/rooms',csrfProtection,(req,res)=>{
     });
 });
 
-router.get('/host',csrfProtection,(req,res)=>{
+router.get('/host',(req,res)=>{
     var query = University.find({"name": {$regex : new RegExp("^" + req.query.term.toLowerCase(), "i")}});
     query.select("name");
     query.exec(function(err, universities){
@@ -75,7 +76,10 @@ router.get('/host',csrfProtection,(req,res)=>{
     });
 });
 
-
+router.get('/users/:courseId',(req,res)=>{
+    var courseId=req.params.courseId;
+    
+});
 
 
 module.exports=router;
