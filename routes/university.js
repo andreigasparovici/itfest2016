@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 
-var Univ=require('../models/institution');
+var Univ=require('../models/university');
 
 router.get('/dashboard',(req,res)=>{
     Univ.find({},(err,docs)=>{

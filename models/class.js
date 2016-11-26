@@ -5,7 +5,7 @@ var classSchema = new Schema({
     name:{
         type: String
     },
-    institution:{
+    university:{
         type: ObjectId,
         required: true
     },

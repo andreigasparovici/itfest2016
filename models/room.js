@@ -6,7 +6,7 @@ var roomSchema = new Schema({
         type: String,
         required: true
     },
-    institution: {
+    university: {
         type: ObjectId,
         required: true
     }
