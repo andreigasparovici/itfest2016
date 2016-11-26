@@ -44,11 +44,16 @@ app.get('/',(req,res)=>{
 
 var loginRoutes = require('./routes/login');
 
+var signupRoutes = require('./routes/signup');
+
 app.use('/login',loginRoutes);
 
-app.get('*',(req,res)=>{
+app.use('/signup', signupRoutes);
+
+/*app.get('*',(req,res)=>{
     res.render('index');
 });
+*/
 
 app.listen(config.PORT,()=>{
     console.log('Server started on port '+config.PORT);
