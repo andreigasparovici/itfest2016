@@ -6,7 +6,7 @@ var eventSchema = new Schema({
         type: String
     },
     class: {
-        type: Schema.Types.ObjectId,
+        type: String,
         required: true
     },
     eventType: {
@@ -14,7 +14,7 @@ var eventSchema = new Schema({
         required: true
     },
     room: {
-        type: Schema.Types.ObjectId,
+        type: String,
         required: true
     },
     start: {
