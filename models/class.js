@@ -6,7 +6,7 @@ var classSchema = new Schema({
         type: String
     },
     university:{
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     },
     students: {
