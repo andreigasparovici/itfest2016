@@ -6,14 +6,12 @@ var classSchema = new Schema({
         type: Date,
         required: true
     },
-    moderator:{
-        type: Schema.Types.ObjectId,
-        required: true
-    },
+    moderator:Array,
     name: {
         type: String,
         required: true
     },
+    description: String,
     host: {
         type: String,
         required: true

@@ -45,6 +45,8 @@ router.post('/',csrfProtection,(req,res)=>{
            'email':req.body.email,
            'password':bcrypt.hashSync(req.body.password),
            'confirmKey':confirmKey,
+           'firstname':req.body.firstname,
+           'lastname':req.body.lastname,
            'confirmed':false
         });
 

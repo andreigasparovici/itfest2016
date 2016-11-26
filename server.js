@@ -79,6 +79,15 @@ app.get('/class/:eventId',(req,res)=>{
         return;
     }
     Events.findById(req.params.eventId,(err,doc)=>{
+
+        var isAdmin=false;
+        if(doc.moderator){
+            doc.moderator.forEach(function(m){
+                if(m.email==req.session.user.email)
+                    isAdmin=true;
+            });
+            }
+
         var subs=[];
         var b="Subscribe";
         User.find({},function(err,users){
@@ -86,7 +95,7 @@ app.get('/class/:eventId',(req,res)=>{
                 if(doc.students.indexOf(user._id)!=-1){
                     subs.push(user);
                     if(user._id==req.session.user._id)
-                      b="Unsubscribe";  
+                        b="Unsubscribe"; 
                 }
             });
             req.flash("btn",b);
@@ -95,7 +104,8 @@ app.get('/class/:eventId',(req,res)=>{
                 user: req.session.user,
                 event: doc,
                 users: subs,
-                buttonText: req.flash().btn
+                buttonText: req.flash().btn,
+                isAdmin: isAdmin
             });
         });
     });
@@ -117,7 +127,7 @@ var Class=require('./models/class');
 app.post('/class/:univId/add',function(req,res){
     require("./models/university").findOne({_id:req.params.univId},function(err,doc){
         Class.collection.insert({
-            "moderator":req.session.user,
+            "moderator":[req.session.user],
             "name":req.body.title,
             "description":req.body.description,
             "host":req.body.host,
@@ -151,6 +161,8 @@ app.get('/classes/:university',(req,res)=>{
         });
     });
 });
+
+//app.use('/')
 
 app.use('/subscribe',require('./routes/subscribe'));
 

@@ -15,9 +15,11 @@
         <a class="btn btn-primary" href="/subscribe/<%=event._id%>">
             <%=buttonText%>
         </a>
-        <button class="btn btn-warning">Modifica</button>
-        <button class="btn btn-danger">Sterge</button>
-
+        <% if(isAdmin){ %>
+            <button class="btn btn-primary">New moderator</button>
+            <button class="btn btn-warning">Update</button>
+            <button class="btn btn-danger">Delete</button>
+        <% } %>
         <hr>
 
         <div id="calendar"></div>
