@@ -67,7 +67,9 @@ app.use('/confirm',confirmRoutes);
 */
 
 app.get('/dashboard',(req,res)=>{
-    res.render("universities");
+    res.render("universities",{
+        user: req.session.user
+    });
 });
 
 app.listen(config.PORT,()=>{
