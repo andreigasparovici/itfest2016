@@ -32,9 +32,11 @@ var eventSchema = new Schema({
     subscribed:{
         type: Array
     },
-    classes:
-    {
+    classes:{
         type: Array
+    },
+    category:{
+        type: String
     }
 
 });
