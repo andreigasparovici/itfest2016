@@ -74,21 +74,30 @@ var Events = require('./models/class');
 var User = require('./models/user');
 
 app.get('/class/:eventId',(req,res)=>{
+    if(!req.session.user){
+        res.redirect("/login");
+        return;
+    }
     Events.findById(req.params.eventId,(err,doc)=>{
         var subs=[];
+        var b="Subscribe";
         User.find({},function(err,users){
             console.log(doc.students);
             users.forEach(function(user){
                 console.log(user._id);
                 if(doc.students.indexOf(user._id)!=-1){
                     subs.push(user);
+                    if(user._id==req.session.user._id)
+                      b="Unsubscribe";  
                 }
             });
+            req.flash("btn",b);
             console.log(subs);
             res.render("class",{
                 user: req.session.user,
                 event: doc,
-                users: subs
+                users: subs,
+                buttonText: req.flash().btn
             });
         });
     });
