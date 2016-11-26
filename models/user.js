@@ -22,9 +22,6 @@ var userSchema = new Schema({
     teacher:{
         type:Boolean,
         default: false
-    },
-    subscribed:{
-        type:Array
     }
 });
 
