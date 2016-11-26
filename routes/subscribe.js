@@ -13,10 +13,18 @@ router.get('/:classid',(req,res)=>{
     }
     var classid=req.params.classid;
     Class.findById(classid,function(err,doc){
-        doc.students.push(req.session.user._id);
-        Class.update({"_id" : mongoose.Types.ObjectId(classid)}, { $set: { students: doc.students}});
-        console.log(doc.students);
-        res.send("Subscribed successfully!");
+        if(doc.students.indexOf(req.session.user._id)!=-1){
+            var i = doc.students.indexOf(req.session.user._id);
+            doc.students.splice(i,i+1);
+            Class.update({"_id" : mongoose.Types.ObjectId(classid)}, { $set: { students: doc.students}}, function(){
+                res.redirect("/class/"+classid);
+            });
+        } else {
+            doc.students.push(req.session.user._id);
+            Class.update({"_id" : mongoose.Types.ObjectId(classid)}, { $set: { students: doc.students}}, function(){
+                res.redirect("/class/"+classid);
+            });
+        }
     });
 });
 
