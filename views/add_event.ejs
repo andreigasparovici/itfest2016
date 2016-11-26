@@ -7,24 +7,40 @@
 <form action="/events/add/<%=classid%>" method="post" class="form-horizontal">
     <div class="form-group">
         <label class="control-label">Title:</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" name="title">
     </div>
     <div class="form-group">
         <label class="control-label">Description:</label>
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" name="description"></textarea>
     </div>
+        <div class="form-group">
+                <label for="type">Select a type:</label>
+                <select name="type" id="type">
+                    <option>Course</option>
+                    <option>Exam</option>
+                    <option>Special</option>
+                </select>
+            </div>
+            <script>
+            $( function() {
+                $('#type').selectmenu();
+            });
+            </script>
     <div class="form-group">
         <label class="control-label">Starting date:</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" name="startdate">
     </div>
     <div class="form-group">
         <label class="control-label">Ending date:</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" name="enddate">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Room:</label>
+        <input type="date" class="form-control" name="room">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
     </div>
-
 </form>
 
 </div>
