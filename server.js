@@ -70,11 +70,11 @@ app.use(require('./routes/university'));
 
 app.use('/events',require('./routes/events'));
 
-var Event = require('./models/event');
+var Events = require('./models/class');
 
-app.get('/event/:eventId',(req,res)=>{
-    Event.findById(req.params.eventId,(err,doc)=>{
-        res.render("event",{
+app.get('/class/:eventId',(req,res)=>{
+    Events.findById(req.params.eventId,(err,doc)=>{
+        res.render("class",{
             user: req.session.user,
             event: doc
         });
@@ -85,8 +85,6 @@ app.get('/logout',(req,res)=>{
     req.session.user=undefined;
     res.redirect("/");
 });
-
-var Events = require('./models/class');
 
 app.get('/classes',(req,res)=>{
    Events.find({},function(err,docs){
