@@ -4,6 +4,15 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     email:{
         type:String,
+        required: true,
+        unique: true
+    },
+    firstname:{
+        type: String,
+        required: true
+    },
+    surname:{
+        type: String,
         required: true
     },
     password:{
@@ -13,6 +22,9 @@ var userSchema = new Schema({
     teacher:{
         type:Boolean,
         default: false
+    },
+    subscribed:{
+        type:Array
     }
 });
 
