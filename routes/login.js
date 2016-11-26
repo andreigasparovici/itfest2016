@@ -12,7 +12,8 @@ var router = express.Router();
 router.get('/',csrfProtection,(req,res)=>{
     res.render('login',{
         csrfToken: req.csrfToken(),
-        flash: req.flash()
+        flash: req.flash(),
+        user: req.session.user
     });
 });
 
