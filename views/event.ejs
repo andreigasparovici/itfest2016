@@ -12,7 +12,6 @@
         <p><%=event.description%></p>
 
         <hr>
-
         <button class="btn btn-primary">Inscrie-te/Anuleaza inscrierea</button>
         <button class="btn btn-warning">Modifica</button>
         <button class="btn btn-danger">Sterge</button>
@@ -28,13 +27,12 @@
     $(document).ready(function() {
 
           // page is now ready, initialize the calendar...
-		$.getJSON('/api/events/<%=event._id%>/instances',function(data){
-			/*$('#calendar').fullCalendar({
+		$.getJSON('/api/event/<%=event._id%>/instances',function(data){
+			$('#calendar').fullCalendar({
 				editable: true,
 				eventLimit: true, // allow "more" link when too many events
-				events: [
-				]
-			})*/
+				events: data
+			});
 			console.log(data);
 		});
 
