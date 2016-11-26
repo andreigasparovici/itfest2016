@@ -5,8 +5,8 @@ var classSchema = new Schema({
     name:{
         type: String
     },
-    institution:{
-        type: ObjectId,
+    university:{
+        type: Schema.Types.ObjectId,
         required: true
     },
     students: {

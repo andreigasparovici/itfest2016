@@ -7,7 +7,7 @@ var eventSchema = new Schema({
         required: true
     },
     moderator:{
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     },
     name: {
@@ -15,11 +15,11 @@ var eventSchema = new Schema({
         required: true
     },
     room: {
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     },
     host: {
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     },
     eventType: {
@@ -37,6 +37,9 @@ var eventSchema = new Schema({
     },
     category:{
         type: String
+    },
+    instances:{
+        type: Array
     }
 
 });

@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var institutionSchema = new Schema({
+var universitySchema = new Schema({
     name: {
         type: String,
         required: true
@@ -18,11 +18,10 @@ var institutionSchema = new Schema({
         type: String,
         required: true
     },
-    institutionType: {
-        type: String,
-        required: true
+    moderator: {
+        type: Schema.Types.ObjectId
     },
-    courses: {
+    events: {
         type: Array
     },
     rooms: {
@@ -30,4 +29,4 @@ var institutionSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("Institution", institutionSchema, 'institution');
+module.exports = mongoose.model("University", universitySchema, 'university');

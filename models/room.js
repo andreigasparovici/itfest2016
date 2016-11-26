@@ -6,8 +6,8 @@ var roomSchema = new Schema({
         type: String,
         required: true
     },
-    institution: {
-        type: ObjectId,
+    university: {
+        type: Schema.Types.ObjectId,
         required: true
     }
 });
