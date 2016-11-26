@@ -13,7 +13,6 @@ var eventSchema = new Schema({
         type: String,
         required: true
     },
-
     room: {
         type: Schema.Types.ObjectId,
         required: true
