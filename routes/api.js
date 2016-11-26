@@ -8,8 +8,23 @@ var Institution = require('../models/institution');
 
 var router = express.Router();
 
+function getInstitutions(criteria)
+{
+    var query = Institution.find(criteria, function(err, institutions){
+        return institutions;
+    });
+}
+
+router.get('/institution',csrfProtection,(req,res)=>{
+    Institution.find({}, function(err, institutions){
+        res.json(institutions);
+    });
+});
+
 router.get('/institution/:institution_start',csrfProtection,(req,res)=>{
-    console.log(Institution.find({name: {$regex : "^" + req.params.institution_start}}));
+    Institution.find({name: {$regex : new RegExp("^" + req.params.institution_start.toLowerCase(), "i")}}, function(err, institutions){
+        res.json(institutions);
+    });
 });
 
 
