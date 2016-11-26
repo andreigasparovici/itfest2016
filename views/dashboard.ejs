@@ -67,4 +67,13 @@
   </div>
 </div>
 
+
+<script>
+  $('#search_bar').autocomplete({
+      source: "/api/university",
+      select: function (event, ui) {
+          window.location = ui.item.url;
+      }
+  });
+</script>
 <% include partials/footer %>
