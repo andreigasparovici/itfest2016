@@ -22,6 +22,9 @@ var institutionSchema = new Schema({
         type: String,
         required: true
     },
+    courses: {
+        type: Array
+    },
     rooms: {
         type: Array
     }

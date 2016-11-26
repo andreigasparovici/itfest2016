@@ -1,0 +1,27 @@
+
+<% if(!needinput){ %>
+
+    <% if(error){ %>
+        <%=error%>
+    <% } else { %>
+
+        <b><%=success%></b>
+
+    <% } %>
+
+<% } else { %>
+
+    <script>
+    function redirect(){
+        window.location.href="/confirm/"+document.getElementById("key").value;
+        return false;
+    }
+
+    </script>
+
+    <label>Enter your confirmation key:</label>
+    <input type="text" id="key"/>
+    <button onclick="redirect()">Confirm</button>
+
+
+<% } %>

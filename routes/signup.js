@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt-nodejs');
 const csrf = require('csurf');
 const validator = require('email-validator');
 const nodemailer = require('nodemailer');
+const srs = require('secure-random-string');
 
 var router = express.Router();
 
@@ -38,12 +39,42 @@ router.post('/',csrfProtection,(req,res)=>{
             res.redirect("/signup");
             return;
         }
+        var confirmKey=srs({length: 16});
+
         User.collection.insert({
            'email':req.body.email,
-           'password':bcrypt.hashSync(req.body.password) 
+           'password':bcrypt.hashSync(req.body.password),
+           'confirmKey':confirmKey
         });
-        req.flash("success","Account created! Please log in.");
-        res.redirect("/login");
+
+        const config = require('../config');
+
+        var mailString='smtps://'+config.GMAIL_ID+'%40gmail.com:'+config.GMAIL_PASS+'@smtp.gmail.com';
+
+        console.log(mailString);
+
+        var transporter = nodemailer.createTransport(mailString);
+
+        var mailOptions = {
+            from: '"GCourse" <'+config.GMAIL_ID+'@gmail.com>',
+            to: 'bar@blurdybloop.com, baz@blurdybloop.com',
+            subject: 'Account confirmation',
+            text: 'Here is your confirmation key: '+confirmKey,
+            html: 'Here is your confirmation key: '+confirmKey,
+        };
+
+    
+        transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+                req.flash("error","Error sending confirmation email. Please try again later.");
+                res.redirect("/signup");
+                console.log(error);
+            }
+            else{
+                req.flash("success","Account created! Please check your email and then log in.");
+                res.redirect("/login");
+            }
+        });
     });
 });
 
