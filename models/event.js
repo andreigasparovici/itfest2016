@@ -40,6 +40,9 @@ var eventSchema = new Schema({
     },
     instances:{
         type: Array
+    },
+    description:{
+        type:String
     }
 
 });

@@ -72,10 +72,10 @@ app.use('/events',require('./routes/events'));
 var Event = require('./models/event');
 
 app.get('/event/:eventId',(req,res)=>{
-    Event.findById(req.params.eventId,(err,docs)=>{
+    Event.findById(req.params.eventId,(err,doc)=>{
         res.render("event",{
             user: req.session.user,
-            events: docs
+            event: doc
         });
     });
 });
