@@ -16,12 +16,19 @@ var userSchema = new Schema({
         required: true
     },
     password:{
-        type:String,
+        type: String,
         required: true
     },
-    teacher:{
-        type:Boolean,
+    host:{
+        type: Boolean,
         default: false
+    },
+    confirmed:{
+        type: Boolean,
+        default: false
+    },
+    confirmKey:{
+        type: String
     }
 });
 
