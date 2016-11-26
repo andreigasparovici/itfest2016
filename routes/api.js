@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 var csrfProtection = csrf({ cookie: true });
 
 var University = require('../models/university');
+var User = require('../models/user');
 var Class = require('../models/class');
 var Event = require('../models/event');
 var Instance = require('../models/instance');
@@ -92,5 +93,20 @@ router.get('/users/:courseId',(req,res)=>{
     
 });
 
+router.get('/hosts',(req,res)=>{
+    starting = req.query.term;
+    if(!starting)
+        starting = "";
+    var query = User.find({"host" : true, "name": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
+    query.select("name");
+    query.exec(function(err, hosts){
+        if (err) return handleError(err);
+        var v=[];
+        hosts.forEach(function(i){
+            v.push({value : i.name});
+        })
+        res.json(v);
+    });
+});
 
 module.exports=router;
