@@ -8,7 +8,7 @@ var userSchema = new Schema({
     },
     password:{
         type:String,
-        require: false
+        required: true
     },
     teacher:{
         type:Boolean,

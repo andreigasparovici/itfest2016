@@ -5,6 +5,7 @@ const validator = require('email-validator');
 
 var csrfProtection = csrf({ cookie: true });
 
+var User = require('../models/user');
 
 var router = express.Router();
 
@@ -18,8 +19,21 @@ router.post('/',csrfProtection,(req,res)=>{
     if(!req.body.email || !validator.validate(req.body.email)){
         req.flash("error","Invalid email!");
         res.redirect("/login");
+        return;
     }
-    
+    if(!req.body.password || !req.body.confirmPassword || req.body.password!=req.body.confirmPassword){
+        req.flash("error","Invalid password!");
+        res.redirect("/login");
+        return;
+    }
+    User.findOne({
+        'email':req.body.email
+    },(err,user)=>{
+        if(err) throw err;
+        if(!user){
+
+        }
+    });
 });
 
 module.exports=router;
