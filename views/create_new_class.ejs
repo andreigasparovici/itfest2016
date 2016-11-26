@@ -18,6 +18,14 @@
                 <textarea id="description" name="description" class="form-control" placeholder="description..."></textarea>
             </div>
             <div class="form-group">
+                <label for="type">Select a type:</label>
+                <select name="type" id="type">
+                    <option>Course</option>
+                    <option>Exam</option>
+                    <option>Special</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-primary">Create</button>
             </div>
         </form>
@@ -32,5 +40,8 @@ $('#host').autocomplete({
         window.location = ui.item.url;
     }
 });
+$( function() {
+    $('#type').selectmenu();
+})
 </script>
 <% include partials/footer %>
