@@ -97,7 +97,7 @@ router.get('/hosts',(req,res)=>{
     starting = req.query.term;
     if(!starting)
         starting = "";
-    var query = User.find({"host" : true, "name": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
+    var query = User.find({"host" : true, "email": {$regex : new RegExp("^" + starting.toLowerCase(), "i")}});
     query.select("name");
     query.exec(function(err, hosts){
         if (err) return handleError(err);
